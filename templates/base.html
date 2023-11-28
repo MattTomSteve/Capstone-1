@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/app.css">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/">Home</a>
+        {% if not g.user %}
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+        {% else %}
+        <a href="/logout">Logout</a>
+        <a href="/profile/{{ g.user.id }}">Profile</a>
+        <a href="/add_cocktail">Add a Cocktail!</a>
+        {% endif %}
+    </nav>
+
+    {% for msg in get_flashed_messages() %}
+        <p>{{ msg }}</p>
+    {% endfor %}
+
+    {% block content %} {% endblock %}
+
+    <script src="/static/app.css"></script>
+</body>
+</html>
+<!-- make base navbar for entire site -->
+<!-- watch auth demo pt 4 ~ 7 minute mark -->
+
+<!-- make base form input to handle hidden tags  -->
+

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Add a cocktail{% endblock %}
+
+{% block content %}
+
+<h1>Add a Cocktail!</h1>
+
+<form method='post' action="/add_cocktail">
+    {{ form.hidden_tag() }}
+
+    {% for field in form
+        if field.widget.input_type != 'hidden' %}
+
+    <p>
+        {{ field.label }}
+        {{ field }}
+
+        {% for error in field.errors %}
+        <span class="form-text text-danger">{{ error }}</span>
+        {% endfor %}
+    </p>
+    {% endfor %}
+
+    <button type="submit">Add Cocktail!</button>
+
+</form>
+    
+
+{% endblock %}

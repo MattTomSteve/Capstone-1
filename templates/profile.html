@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Profile - {{ user.username }}{% endblock %}
+
+{% block content %}
+    <h1>Profile</h1>
+    <div>
+        <p>Username:  {{ user.username }}</p>
+        <p>Email: {{ user.email }}</p>
+        <p>Profile image: <img src="{{ user.img_url}}" alt=""></p>
+    </div>
+    <h3>User Saved Drinks</h3>
+    <ul>
+        {% for cocktail in user.cocktail %}
+        <li><a href="/user_cocktails/{{ cocktail.id }}">{{ cocktail.name }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <form method='POST' action="/profile/{{ user.id }}/delete">
+        <button>Delete Account</button>
+    </form>
+
+    
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <h1>Welcome to Backpocket Bartender</h1>
+    
+    <div>
+        <h3>Search Cocktail by Name:</h3>
+        <form action="/cocktail_search">
+            <input type="text" name="cocktailsearch" placeholder="Cocktail Search">
+            <button>Search</button>
+        </form>
+    </div>
+
+    <div></div>
+        <h3>Search Cocktail by Ingredient:</h3>
+        <form action="/ingredient_search">
+            <input type="text" name="ingredientsearch" placeholder="Ingredient Search">
+            <button>Search</button>
+        </form>
+    </div>
+
+    <ul>
+        {% for cocktail in cocktail_info %}
+            <li>
+                <h2><a href="/cocktail_details/{{ cocktail['id'] }}">{{ cocktail['name']}}</a></h2>
+                <img src="{{ cocktail['image'] }}" alt="">
+            </li>
+        {% endfor %}
+    </ul>
+
+
+
+    <ul>
+        {% for ingredient in ingredient_info %}
+            <li>
+                <h2><a href="/cocktail_details/{{ cocktail['id'] }}">{{ cocktail['name']}}</a></h2>
+                <img src="{{ cocktail['image'] }}" alt="">
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

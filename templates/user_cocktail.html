@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+    <h2><a href="/cocktail_details/{{ cocktail }}">{{ cocktail['name']}}</a></h2>
+    <img src="{{ cocktail['img_url'] }}" alt="">
+    <p> {{ cocktail['glass']}}</p>
+    <p> {{ cocktail['instructions']}}</p>
+
+    <form method='POST' action="/user_cocktails/{{ cocktail.id }}/delete">
+        <button>Delete Cocktail</button>
+    </form>
+    
+{% endblock %}
